@@ -21,6 +21,8 @@
 ```powershell
 # Make `Get-ChildItem` colorful
 Install-Module DirColors
+# Intall posh-git
+Install-Module posh-git
 # Install PsGet module first
 (new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/psget/psget/master/GetPsGet.ps1") | iex
 # install oh-my-posh from github
