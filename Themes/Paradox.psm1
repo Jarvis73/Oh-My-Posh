@@ -22,10 +22,11 @@ function Write-Theme {
     }
 
     $user = [System.Environment]::UserName
-    $computer = [System.Environment]::MachineName
+    # $computer = [System.Environment]::MachineName
     $path = Get-FullPath -dir $pwd
+    $indicator = [Char]::ConvertFromUtf32(0x270F)
     if (Test-NotDefaultUser($user)) {
-        $prompt += Write-Prompt -Object "$user@$computer " -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
+        $prompt += Write-Prompt -Object "$user $indicator" -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
     }
 
     if (Test-VirtualEnv) {
@@ -55,21 +56,21 @@ function Write-Theme {
     $timestamp = "[$timeStamp]"
 
     $prompt += Set-CursorForRightBlockWrite -textLength ($timestamp.Length + 1)
-    $prompt += Write-Prompt $timeStamp -ForegroundColor $sl.Colors.PromptForegroundColor
+    # $prompt += Write-Prompt $timeStamp -ForegroundColor $sl.Colors.PromptForegroundColor
 
     $prompt += Set-Newline
 
     if ($with) {
         $prompt += Write-Prompt -Object "$($with.ToUpper()) " -BackgroundColor $sl.Colors.WithBackgroundColor -ForegroundColor $sl.Colors.WithForegroundColor
     }
-    $prompt += Write-Prompt -Object ($sl.PromptSymbols.PromptIndicator) -ForegroundColor $sl.Colors.PromptBackgroundColor
+    $prompt += Write-Prompt -Object ($sl.PromptSymbols.PromptIndicator) -ForegroundColor $sl.Colors.PromptIndicatorColor
     $prompt += ' '
     $prompt
 }
 
 $sl = $global:ThemeSettings #local settings
 $sl.PromptSymbols.StartSymbol = ''
-$sl.PromptSymbols.PromptIndicator = [char]::ConvertFromUtf32(0x276F)
+$sl.PromptSymbols.PromptIndicator = [char]::ConvertFromUtf32(0x27A4)
 $sl.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
@@ -79,3 +80,5 @@ $sl.Colors.WithForegroundColor = [ConsoleColor]::DarkRed
 $sl.Colors.WithBackgroundColor = [ConsoleColor]::Magenta
 $sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
 $sl.Colors.VirtualEnvForegroundColor = [System.ConsoleColor]::White
+$sl.Colors.PromptIndicatorColor = [ConsoleColor]::Green
+$sl.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray

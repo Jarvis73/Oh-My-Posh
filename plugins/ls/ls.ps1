@@ -1,5 +1,4 @@
 Import-Module "DirColors"
-Update-DirColors "C:\Users\Jarvis\.dircolors"
 
 function Get-ChildItem-Wide {
 
