@@ -1,4 +1,5 @@
 Import-Module "DirColors"
+Update-DirColors "$PSScriptRoot\.dircolors"
 
 function Get-ChildItem-Wide {
 

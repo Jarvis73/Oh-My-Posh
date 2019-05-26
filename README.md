@@ -16,6 +16,17 @@
 * [Themes](#themes)
 * [Update Logs](#update-log)
 
+## Usage
+
+```powershell
+# Make `Get-ChildItem` colorful
+Install-Module DirColors
+# Install PsGet module first
+(new-object Net.WebClient).DownloadString("https://raw.githubusercontent.com/psget/psget/master/GetPsGet.ps1") | iex
+# install oh-my-posh from github
+Install-Module -ModuleUrl https://github.com/Jarvis73/oh-my-posh/archive/2.0.264.zip
+```
+
 ## About
 
 A theme engine for Powershell in ConEmu inspired by the work done by Chris Benti on [PS-Config][chrisbenti-psconfig] and [Oh-My-ZSH][oh-my-zsh] on OSX and Linux (hence the name).
@@ -236,6 +247,8 @@ Happy theming!
 ## Update-Log
 
 * [2019.05.09] `ls` supports Chinese character alignment.
+
+![Show](./images/ls_chinese.png)
+
 * [2018.12.12] Add dircolors for command `Get-ChildItem` and `Get-ChildItem-Wide/ls`. (`ll` is an alias to `Get-ChildItem`)
 
-![Show](./images/fig1.jpg)
