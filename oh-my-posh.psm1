@@ -3,6 +3,7 @@
 . "$PSScriptRoot\defaults.ps1"
 . "$PSScriptRoot\Helpers\PoshGit.ps1"
 . "$PSScriptRoot\Helpers\Prompt.ps1"
+. "$PSScriptRoot\plugins\ls\ls.ps1"
 
 <#
         .SYNOPSIS

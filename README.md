@@ -14,6 +14,7 @@
 * [Configuration](#configuration)
 * [Helper functions](#helper-functions)
 * [Themes](#themes)
+* [Update Logs](#update-log)
 
 ## About
 
@@ -231,3 +232,10 @@ Happy theming!
 [img-theme-avit]: https://blog.itdepends.be/img/avit.png
 [img-theme-honukai]: https://blog.itdepends.be/img/honukai.png
 [img-theme-fish]: https://blog.itdepends.be/img/fish.png
+
+## Update-Log
+
+* [2019.05.09] `ls` supports Chinese character alignment.
+* [2018.12.12] Add dircolors for command `Get-ChildItem` and `Get-ChildItem-Wide/ls`. (`ll` is an alias to `Get-ChildItem`)
+
+![Show](./images/fig1.jpg)
