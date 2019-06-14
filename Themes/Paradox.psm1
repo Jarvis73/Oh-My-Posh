@@ -29,13 +29,28 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$user $indicator" -ForegroundColor $sl.Colors.SessionInfoForegroundColor -BackgroundColor $sl.Colors.SessionInfoBackgroundColor
     }
 
+    if (Test-Proxy) {
+        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.ProxyBackgroundColor
+        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.ProxySymbol) " -ForegroundColor $sl.Colors.ProxyForegroundColor -BackgroundColor $sl.Colors.ProxyBackgroundColor
+    }
+
     if (Test-VirtualEnv) {
-        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
+        if (Test-Proxy) {
+            $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.ProxyBackgroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
+        }
+        else {
+            $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
+        }
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.VirtualEnvSymbol) $(Get-VirtualEnvName) " -ForegroundColor $sl.Colors.VirtualEnvForegroundColor -BackgroundColor $sl.Colors.VirtualEnvBackgroundColor
         $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.VirtualEnvBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
     }
     else {
-        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+        if (Test-Proxy) {
+            $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.ProxyBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+        }
+        else {
+            $prompt += Write-Prompt -Object "$($sl.PromptSymbols.SegmentForwardSymbol) " -ForegroundColor $sl.Colors.SessionInfoBackgroundColor -BackgroundColor $sl.Colors.PromptBackgroundColor
+        }
     }
 
     # Writes the drive portion
@@ -72,6 +87,7 @@ $sl = $global:ThemeSettings #local settings
 $sl.PromptSymbols.StartSymbol = ''
 $sl.PromptSymbols.PromptIndicator = [char]::ConvertFromUtf32(0x27A4)
 $sl.PromptSymbols.SegmentForwardSymbol = [char]::ConvertFromUtf32(0xE0B0)
+$sl.PromptSymbols.ProxySymbol = [char]::ConvertFromUtf32(0x2708)
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
 $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
@@ -82,3 +98,5 @@ $sl.Colors.VirtualEnvBackgroundColor = [System.ConsoleColor]::Red
 $sl.Colors.VirtualEnvForegroundColor = [System.ConsoleColor]::White
 $sl.Colors.PromptIndicatorColor = [ConsoleColor]::Green
 $sl.Colors.SessionInfoBackgroundColor = [ConsoleColor]::DarkGray
+$sl.Colors.ProxyForegroundColor = [ConsoleColor]::DarkRed
+$sl.Colors.ProxyBackgroundColor = [ConsoleColor]::Black

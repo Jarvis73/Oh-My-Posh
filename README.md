@@ -29,6 +29,12 @@ Install-Module posh-git
 Install-Module -ModuleUrl https://github.com/Jarvis73/oh-my-posh/archive/2.0.264.zip
 ```
 
+### Updated Theme
+
+`Paradox` : Updated **2019-06-14** 
+
+---
+
 ## About
 
 A theme engine for Powershell in ConEmu inspired by the work done by Chris Benti on [PS-Config][chrisbenti-psconfig] and [Oh-My-ZSH][oh-my-zsh] on OSX and Linux (hence the name).
@@ -248,9 +254,12 @@ Happy theming!
 
 ## Update-Log
 
+* [2019.06.14] Update `Paradox` theme: add Proxy segment (By checking `$env:HTTP_PROXY` and `$env:HTTPS_PROXY`. The `fly`  and `act` command is defined in [My Powershell Repository](<https://github.com/Jarvis73/PowerShell/tree/master/scripts>) ) 
+
+![Show](./images/fig-1.jpg)
+
 * [2019.05.09] `ls` supports Chinese character alignment.
 
 ![Show](./images/ls_chinese.png)
 
 * [2018.12.12] Add dircolors for command `Get-ChildItem` and `Get-ChildItem-Wide/ls`. (`ll` is an alias to `Get-ChildItem`)
-

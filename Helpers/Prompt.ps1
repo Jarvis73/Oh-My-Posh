@@ -170,6 +170,13 @@ function Get-VirtualEnvName {
     }
 }
 
+function Test-Proxy {
+    if ($env:HTTP_PROXY -or $env:HTTPS_PROXY) {
+        return $true
+    }
+    return $false
+}
+
 function Test-NotDefaultUser($user) {
     return $DefaultUser -eq $null -or $user -ne $DefaultUser
 }
