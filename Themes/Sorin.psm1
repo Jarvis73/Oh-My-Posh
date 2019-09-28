@@ -33,6 +33,11 @@ function Write-Theme {
         $prompt += Write-Prompt -Object "$($themeInfo.VcInfo) " -ForegroundColor $themeInfo.BackgroundColor
     }
 
+    # write proxy sign
+    if (Test-Proxy) {
+        $prompt += Write-Prompt -Object "$($sl.PromptSymbols.ProxySymbol) " -ForegroundColor $sl.Colors.WithBackgroundColor
+    }
+
     # write virtualenv
     if (Test-VirtualEnv) {
         $prompt += Write-Prompt -Object 'env:' -ForegroundColor $sl.Colors.PromptForegroundColor
@@ -53,6 +58,7 @@ function Write-Theme {
 
 $sl = $global:ThemeSettings #local settings
 $sl.PromptSymbols.PromptIndicator = [char]::ConvertFromUtf32(0x276F)
+$sl.PromptSymbols.ProxySymbol = [char]::ConvertFromUtf32(0xFA00)
 $sl.Colors.PromptForegroundColor = [ConsoleColor]::White
 $sl.Colors.PromptSymbolColor = [ConsoleColor]::White
 $sl.Colors.PromptHighlightColor = [ConsoleColor]::DarkBlue
