@@ -15,7 +15,7 @@ function Get-ChildItem-Wide {
     $childs |
     ForEach-Object {
         $curFile = Format-ColorizedFilename($_)
-        $output = $curFile + (" "*($len - $_.name.length - ([regex]::Matches($_, "[\u4e00-\u9fa5]")).count + $pad))
+        $output = $curFile + (" "*($len - $_.Name.Length - ([regex]::Matches($_.Name.Length, "[\u4e00-\u9fa5]")).count + $pad))
         $count += $len + $pad
 
         Write-Host $output -nonewline
